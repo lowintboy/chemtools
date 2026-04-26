@@ -702,6 +702,40 @@ body {
 }
 [data-theme="dark"] .cell-tooltip { background: var(--surface-2); color: var(--ink); border: 1px solid var(--rule); }
 
+/* Nomenclature */
+.nomen-name {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 6px 0 8px;
+  line-height: 1.3;
+}
+.nomen-trivial {
+  font-size: 13px;
+  color: var(--ink-3);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.nomen-type-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+.nomen-detect {
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
 /* Version tag */
 .version-tag {
   font-size: 12px;

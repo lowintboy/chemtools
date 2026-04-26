@@ -2,6 +2,7 @@
   import { parse, molarMass } from '$lib/chem.js';
   import PeriodicTable from '../components/PeriodicTable.svelte';
   import Calculator from '../components/Calculator.svelte';
+  import Nomenclature from '../components/Nomenclature.svelte';
   import SettingsPanel from '../components/SettingsPanel.svelte';
   import { browser } from '$app/environment';
 
@@ -125,6 +126,14 @@
   >
     <span class="tab-num">02</span> Molar mass calculator
   </button>
+  <button
+    class="tab"
+    role="tab"
+    aria-selected={tab === 'nomen'}
+    onclick={() => (tab = 'nomen')}
+  >
+    <span class="tab-num">03</span> Nomenclature
+  </button>
 </nav>
 
 <main class="page">
@@ -135,7 +144,7 @@
       {showMass}
       {density}
     />
-  {:else}
+  {:else if tab === 'calc'}
     <Calculator
       bind:formula
       {result}
@@ -143,5 +152,7 @@
       clearHistory={() => (history = [])}
       {onJumpToElement}
     />
+  {:else if tab === 'nomen'}
+    <Nomenclature />
   {/if}
 </main>
