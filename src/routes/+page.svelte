@@ -101,7 +101,7 @@
     <div class="brand-tag">created by <a href="https://sangmin.kim" target="_blank" rel="noopener noreferrer">sangmin kim</a></div>
   </div>
   <div style="display: flex; align-items: center; gap: 12px">
-    <span style="font-size: 12px; color: var(--ink-3); font-family: var(--font-mono)">
+    <span class="version-tag">
       v0.1 &middot; IUPAC 2021 weights
     </span>
     <SettingsPanel {theme} {density} {fontPair} {showMass} onSetTweak={setTweak} />
