@@ -194,6 +194,25 @@ body {
   width: max-content;
   position: relative;
 }
+.ptable-header {
+  display: grid;
+  grid-template-columns: repeat(18, var(--cell));
+  gap: var(--gap);
+  width: max-content;
+  margin-bottom: var(--gap);
+}
+.group-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-3);
+  height: 16px;
+  line-height: 1;
+}
+.group-label.iupac { font-weight: 600; color: var(--ink-2); }
+.group-label.cas { font-size: 9px; }
 .cell {
   position: relative;
   background: var(--surface);

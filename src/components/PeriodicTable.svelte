@@ -1,7 +1,10 @@
 <script>
+  import { onMount } from 'svelte';
   import { ELEMENTS, CATEGORY_LABELS } from '$lib/data/elements.js';
   import { formatMass } from '$lib/utils.js';
   import ElementDetail from './ElementDetail.svelte';
+
+  const CAS_GROUPS = ['1A','2A','3B','4B','5B','6B','7B','8B','8B','8B','1B','2B','3A','4A','5A','6A','7A','8A'];
 
   let { formulaCounts = null, onElementClick, showMass, density } = $props();
 
@@ -9,6 +12,19 @@
   let search = $state('');
   let filterCat = $state(null);
   let tooltip = $state(null);
+  let searchInput = $state(null);
+
+  onMount(() => {
+    function onKeydown(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'f') {
+        e.preventDefault();
+        searchInput?.focus();
+        searchInput?.select();
+      }
+    }
+    window.addEventListener('keydown', onKeydown);
+    return () => window.removeEventListener('keydown', onKeydown);
+  });
 
   let matches = $derived.by(() => {
     const q = search.trim().toLowerCase();
@@ -51,6 +67,7 @@
         <path d="m20 20-3.5-3.5" />
       </svg>
       <input
+        bind:this={searchInput}
         bind:value={search}
         onkeydown={handleSearchKey}
         placeholder="Search by name, symbol, or number"
@@ -59,6 +76,14 @@
   </div>
 
   <div class="ptable-wrap">
+    <div class="ptable-header" data-density={density}>
+      {#each Array(18) as _, i}
+        <div class="group-label iupac">{i + 1}</div>
+      {/each}
+      {#each CAS_GROUPS as cas}
+        <div class="group-label cas">{cas}</div>
+      {/each}
+    </div>
     <div class="ptable" data-density={density}>
       {#each ELEMENTS as el (el.z)}
         {@const dimmed = (matches && !matches.has(el.z)) || (filterCat && el.c !== filterCat)}
