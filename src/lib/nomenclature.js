@@ -99,6 +99,19 @@ function detectPolyatomicIon(counts) {
 
       const allMetal = remSyms.every(s => isMetal(s));
       if (allMetal && remSyms.length <= 1) {
+        // Restricted ions (peroxide, superoxide) only fit single-state Group 1/2
+        // metals with exact charge balance — prevents false matches like MnO2
+        // (which is manganese(IV) oxide, not "manganese peroxide").
+        if (ion.restricted) {
+          const sym = remSyms[0];
+          const states = METAL_OXIDATION_STATES[sym];
+          if (!states || states.length !== 1) continue;
+          const cationCharge = states[0];
+          if (cationCharge !== 1 && cationCharge !== 2) continue;
+          const totalPos = cationCharge * rem[sym];
+          const totalNeg = Math.abs(ion.charge) * mult;
+          if (totalPos !== totalNeg) continue;
+        }
         return { ion, multiplier: mult, remaining: rem };
       }
 

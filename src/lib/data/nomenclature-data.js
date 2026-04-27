@@ -36,6 +36,10 @@ export const POLYATOMIC_IONS = [
   { formula: 'C2O4',   name: 'oxalate',            charge: -2, counts: { C:2, O:4 } },
   { formula: 'BrO3',   name: 'bromate',            charge: -1, counts: { Br:1, O:3 } },
   { formula: 'IO3',    name: 'iodate',             charge: -1, counts: { I:1, O:3 } },
+  // Single-element diatomic anions — only valid with single-state +1/+2 metals (Group 1/2).
+  // The `restricted` flag prevents false positives like MnO2 (manganese(IV) oxide) or CO2.
+  { formula: 'O2',     name: 'peroxide',           charge: -2, counts: { O:2 }, restricted: true },
+  { formula: 'O2',     name: 'superoxide',         charge: -1, counts: { O:2 }, restricted: true },
 ];
 
 // Element naming data: anion names, acid roots, electronegativity

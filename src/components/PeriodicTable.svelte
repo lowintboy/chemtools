@@ -16,11 +16,15 @@
 
   onMount(() => {
     function onKeydown(e) {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'f') {
-        e.preventDefault();
-        searchInput?.focus();
-        searchInput?.select();
-      }
+      if (e.key !== 'f' && e.key !== 'F') return;
+      // Match exactly Cmd+F (Mac) or Ctrl+F (others); reject combos like
+      // Cmd+Ctrl+F (macOS fullscreen) so we don't steal system shortcuts.
+      const metaOnly = e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey;
+      const ctrlOnly = e.ctrlKey && !e.metaKey && !e.altKey && !e.shiftKey;
+      if (!metaOnly && !ctrlOnly) return;
+      e.preventDefault();
+      searchInput?.focus();
+      searchInput?.select();
     }
     window.addEventListener('keydown', onKeydown);
     return () => window.removeEventListener('keydown', onKeydown);
