@@ -3,6 +3,7 @@
   import PeriodicTable from '../components/PeriodicTable.svelte';
   import Calculator from '../components/Calculator.svelte';
   import Nomenclature from '../components/Nomenclature.svelte';
+  import Quiz from '../components/Quiz.svelte';
   import SettingsPanel from '../components/SettingsPanel.svelte';
   import { browser } from '$app/environment';
 
@@ -134,6 +135,14 @@
   >
     <span class="tab-num">03</span> Nomenclature
   </button>
+  <button
+    class="tab"
+    role="tab"
+    aria-selected={tab === 'quiz'}
+    onclick={() => (tab = 'quiz')}
+  >
+    <span class="tab-num">04</span> Quiz
+  </button>
 </nav>
 
 <main class="page">
@@ -154,5 +163,7 @@
     />
   {:else if tab === 'nomen'}
     <Nomenclature />
+  {:else if tab === 'quiz'}
+    <Quiz />
   {/if}
 </main>
