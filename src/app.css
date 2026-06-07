@@ -1076,3 +1076,71 @@ body {
     to { opacity: 1; transform: translateY(-50%); }
   }
 }
+
+/* ── Lewis structures ──────────────────────────────────────── */
+.lewis-svg-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 16px;
+}
+.lewis-svg-wrap svg {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+}
+.lewis-charge {
+  vertical-align: super;
+  font-size: 0.7em;
+  color: var(--accent);
+  margin-left: 1px;
+}
+.lewis-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+.lewis-summary .num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.lewis-summary .lbl {
+  font-size: 11px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.lewis-geom {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.lewis-geom .axe {
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+.lewis-note {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent);
+  background: var(--surface-2);
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.lewis-unsupported {
+  padding: 28px 24px;
+  text-align: center;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px dashed var(--rule);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}

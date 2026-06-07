@@ -4,6 +4,7 @@
   import Calculator from '../components/Calculator.svelte';
   import Nomenclature from '../components/Nomenclature.svelte';
   import Quiz from '../components/Quiz.svelte';
+  import LewisStructure from '../components/LewisStructure.svelte';
   import SettingsPanel from '../components/SettingsPanel.svelte';
   import { browser } from '$app/environment';
 
@@ -143,6 +144,14 @@
   >
     <span class="tab-num">04</span> Quiz
   </button>
+  <button
+    class="tab"
+    role="tab"
+    aria-selected={tab === 'lewis'}
+    onclick={() => (tab = 'lewis')}
+  >
+    <span class="tab-num">05</span> Lewis structures
+  </button>
 </nav>
 
 <main class="page">
@@ -165,5 +174,7 @@
     <Nomenclature />
   {:else if tab === 'quiz'}
     <Quiz />
+  {:else if tab === 'lewis'}
+    <LewisStructure />
   {/if}
 </main>
